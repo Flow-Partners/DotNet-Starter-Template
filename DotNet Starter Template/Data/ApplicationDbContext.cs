@@ -12,6 +12,9 @@ namespace DotNet_Starter_Template.Data
 
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<RolePermission> RolePermissions { get; set; }
+        public DbSet<Printer> Printers { get; set; }
+        public DbSet<PrintingTemplate> PrintingTemplates { get; set; }
+        public DbSet<PrintJob> PrintJobs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -48,6 +51,25 @@ namespace DotNet_Starter_Template.Data
                 .WithMany(p => p.RolePermissions)
                 .HasForeignKey(rp => rp.PermissionId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // PrintJob relationships
+            builder.Entity<PrintJob>()
+                .HasOne(pj => pj.Printer)
+                .WithMany(p => p.PrintJobs)
+                .HasForeignKey(pj => pj.PrinterId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<PrintJob>()
+                .HasOne(pj => pj.PrintingTemplate)
+                .WithMany(pt => pt.PrintJobs)
+                .HasForeignKey(pj => pj.PrintingTemplateId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<PrintJob>()
+                .HasOne(pj => pj.RequestedBy)
+                .WithMany()
+                .HasForeignKey(pj => pj.RequestedById)
+                .OnDelete(DeleteBehavior.SetNull);
 
             // Seed initial data
             SeedData(builder);

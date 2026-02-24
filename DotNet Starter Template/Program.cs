@@ -103,12 +103,18 @@ try
     builder.Services.AddScoped<IPermissionRepository, PermissionRepository>();
     builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
     builder.Services.AddScoped<IRolePermissionRepository, RolePermissionRepository>();
+    builder.Services.AddScoped<IPrinterRepository, PrinterRepository>();
+    builder.Services.AddScoped<IPrintingTemplateRepository, PrintingTemplateRepository>();
+    builder.Services.AddScoped<IPrintJobRepository, PrintJobRepository>();
 
     // Register services
     builder.Services.AddScoped<IAuthService, AuthService>();
     builder.Services.AddScoped<IRoleService, RoleService>();
     builder.Services.AddScoped<IPermissionService, PermissionService>();
     builder.Services.AddScoped<IUserService, UserService>();
+    builder.Services.AddScoped<IPrinterService, PrinterService>();
+    builder.Services.AddScoped<IPrintingTemplateService, PrintingTemplateService>();
+    builder.Services.AddScoped<IPrintJobService, PrintJobService>();
 
     // Add AutoMapper
     builder.Services.AddAutoMapper(typeof(Program));
