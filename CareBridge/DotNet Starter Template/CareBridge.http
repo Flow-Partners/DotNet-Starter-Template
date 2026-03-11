@@ -1,0 +1,11 @@
+@CareBridge_HostAddress = http://localhost:5071
+
+GET {{CareBridge_HostAddress}}/swagger
+Accept: application/json
+
+###
+
+GET {{CareBridge_HostAddress}}/api/Patients
+Accept: application/json
+
+###

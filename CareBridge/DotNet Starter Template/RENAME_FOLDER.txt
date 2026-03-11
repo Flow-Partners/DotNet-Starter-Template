@@ -1,0 +1,11 @@
+Rename this folder to "CareBridge" so the path is: CareBridge.Api/CareBridge/
+
+Option 1 - Terminal (from CareBridge.Api folder):
+  mv "DotNet Starter Template" "CareBridge"
+
+Option 2 - Run the script (from CareBridge.Api folder):
+  bash "DotNet Starter Template/rename-to-carebridge.sh"
+
+Option 3 - Finder: right-click folder → Rename → CareBridge
+
+The project file is already CareBridge.csproj and all namespaces use CareBridge.
